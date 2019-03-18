@@ -1,28 +1,13 @@
 <template>
-  <div class="container" v-watermark="'Watermark'">
-
+  <div
+    class="container"
+    v-watermark="'ABC'">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-
-  components: {},
-
-  extends: {},
-
-  props: {},
-
-  data() {
-    return {}
-  },
-
-  computed: {},
-
-  watch: {},
-
-  methods: {}
+  name: 'App'
 }
 </script>
 

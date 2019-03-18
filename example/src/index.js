@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-import vueWatermark from '../../src'
+import watermark from '../../dist'
 
 const DEFAULT_CONFIG = {
   zIndex: 1000,
@@ -14,7 +14,7 @@ const DEFAULT_CONFIG = {
 }
 
 Vue.config.productionTip = false
-Vue.use(vueWatermark, DEFAULT_CONFIG)
+Vue.use(watermark, DEFAULT_CONFIG)
 
 /* eslint-disable no-new */
 new Vue({
