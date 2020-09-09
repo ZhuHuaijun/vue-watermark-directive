@@ -2,13 +2,20 @@
 
 使用npm安装
 
+```js
 npm install vue-watermark-directive --save
+```
+
+使用yarn安装
+```js
+yarn add vue-watermark-directive --save
+```
 
 ### 使用
 
 在应用初始化时，安装插件。
 
-```
+```js
 import Vue from 'vue'
 import watermark from 'vue-watermark-directive'
 
@@ -19,7 +26,7 @@ Vue.use(watermark)
 
 这里也支持使用第二个参数来配置插件。
 
-```
+```js
 import Vue from 'vue'
 import vueWatermark from 'vue-watermark-directive'
 
@@ -44,7 +51,7 @@ Vue.use(vueWatermark, DEFAULT_CONFIG)
 
 使用字符串：
 
-```
+```html
 <div
   class="container"
   v-watermark="'ABC'">
@@ -53,7 +60,7 @@ Vue.use(vueWatermark, DEFAULT_CONFIG)
 
 使用自定义配置:
 
-```
+```html
 <div
   class="container"
   v-watermark="{
