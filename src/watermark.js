@@ -1,4 +1,4 @@
-function drawWatermark({
+async function drawWatermark({
   container = document.body,
   zIndex = 1000,
   font = '16px microsoft yahei',
@@ -26,7 +26,21 @@ function drawWatermark({
   ctx.rotate(Math.PI / 180 * rotate)
   ctx.fillText(content, width / 2, 0)
 
-  let base64Url = canvas.toDataURL()
+  function getBlobUrl(icanvas) {
+    return new Promise((resolve) => {
+      icanvas.toBlob((blob) => {
+        resolve(URL.createObjectURL(blob))
+      })
+    })
+  }
+  const urlMark = `vue-watermark-blob-url-${content}`
+  if (sessionStorage.getItem(urlMark)) {
+    URL.revokeObjectURL(sessionStorage.getItem(urlMark))
+    sessionStorage.removeItem(urlMark)
+  }
+  const blobUrl = await getBlobUrl(canvas)
+  sessionStorage.setItem(urlMark, blobUrl)
+
   let prevWatermarkDiv = container.firstChild
   let watermarkDiv
 
@@ -48,7 +62,7 @@ function drawWatermark({
       z-index: ${zIndex};
       pointer-events: none;
       background-repeat: ${repeat ? 'repeat' : 'no-repeat'};
-      background-image: url('${base64Url}');
+      background-image: url('${blobUrl}');
     `
   )
 
